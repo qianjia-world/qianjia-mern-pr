@@ -40,4 +40,6 @@ mongoose
 	})
 	.catch((err) => {
 		console.log(err)
+		console.log("Connected to DB failed")
+		app.listen(5001)
 	})
