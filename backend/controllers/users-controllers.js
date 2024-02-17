@@ -13,4 +13,15 @@ const getUsers = async (req, res, next) => {
 	res.json({ users: users.map((user) => user.toObject({ getters: true })) })
 }
 
+const getUserDetail = async (req, res, next) => {}
+const signup = async (req, res, next) => {}
+const login = async (req, res, next) => {}
+const logout = async (req, res, next) => {}
+const putUserDetail = async (req, res, next) => {}
+
 exports.getUsers = getUsers
+exports.getUserDetail = getUserDetail
+exports.signup = signup
+exports.login = login
+exports.logout = logout
+exports.putUserDetail = putUserDetail

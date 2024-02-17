@@ -3,6 +3,10 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 
 const userRoutes = require("./routes/users-routes")
+const functionRoutes = require("./routes/functions-routes")
+// const gameRoutes = require("./routes/games-routes")
+const uploadRoutes = require("./routes/upload-routes")
+const webRoutes = require("./routes/web-routes")
 
 const app = express()
 
@@ -19,7 +23,16 @@ app.use((req, res, next) => {
 	next()
 })
 
+// user
 app.use("/api/v1/users", userRoutes)
+// function: 列表 投票、占卜、websocket
+app.use("/api/v1/functions", functionRoutes)
+// Game
+// app.use("/api/v1/games", gameRoutes)
+// upload
+app.use("/api/v1/upload", uploadRoutes)
+// website: info contact
+app.use("/api/v1/web", webRoutes)
 
 // Error handling middleware
 app.use((error, req, res, next) => {
