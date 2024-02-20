@@ -1,9 +1,10 @@
 const express = require("express")
+const functionsControllers = require("../controllers/functions-controllers")
 const votesControllers = require("../controllers/votes-controllers")
 const fortuneControllers = require("../controllers/fortune-controllers")
 const router = express.Router()
 
-router.get("/", (req, res, next) => {})
+router.get("/", functionsControllers.getFunctions)
 
 // 投票功能
 router.get("/votes", votesControllers.getVotes)
