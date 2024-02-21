@@ -13,6 +13,7 @@ const getFunctions = async (req, res, next) => {
 			)
 		)
 	}
+	
 	res.json({
 		data: webInfo.toObject({ getters: true }).functions
 	})

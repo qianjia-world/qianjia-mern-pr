@@ -31,7 +31,6 @@ const postContact = async (req, res, next) => {
 	try {
 		await contact.save()
 	} catch (error) {
-		console.log(error)
 		return next(
 			new HttpError(
 				"Fetching contact failed, please try again later.",
