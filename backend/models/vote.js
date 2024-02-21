@@ -1,9 +1,17 @@
 const mongoose = require("mongoose")
-const uniqueValidator = require("mongoose-unique-validator")
 
 const Schema = mongoose.Schema
 
-const voteSchema = new Schema({})
+const voteSchema = new Schema({
+	question: { type: String, required: true },
+	option: {
+		left: { type: String, required: true },
+		right: { type: String, required: true }
+	},
+	result: {
+		left: { type: Number, required: true },
+		right: { type: Number, required: true }
+	}
+})
 
-voteSchema.plugin(uniqueValidator)
 module.exports = mongoose.model("Vote", voteSchema)

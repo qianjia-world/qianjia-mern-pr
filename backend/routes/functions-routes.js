@@ -3,7 +3,7 @@ const router = express.Router()
 const { check, oneOf } = require("express-validator")
 
 const { nextValidatorError } = require("../middleware/next-validator-error")
-const { checkAuthAdmin } = require("../middleware/check-auth")
+const { getAuth, checkAuthAdmin } = require("../middleware/check-auth")
 
 const functionsControllers = require("../controllers/functions-controllers")
 const votesControllers = require("../controllers/votes-controllers")
@@ -13,9 +13,74 @@ router.get("/", functionsControllers.getFunctions)
 
 // 投票功能
 router.get("/votes", votesControllers.getVotes)
-router.post("/votes", checkAuthAdmin, votesControllers.postVote)
-router.patch("/votes/:id", checkAuthAdmin, votesControllers.patchVote)
-router.delete("/votes/:id", checkAuthAdmin, votesControllers.deleteVote)
+
+router.post(
+	"/votes",
+	checkAuthAdmin,
+	[
+		check("question")
+			.notEmpty()
+			.withMessage("Question con not set empty value"),
+		check("option.left")
+			.notEmpty()
+			.withMessage("Option left con not set empty value"),
+		check("option.right")
+			.notEmpty()
+			.withMessage("Option right con not set empty value")
+	],
+	nextValidatorError,
+	votesControllers.postVote
+)
+router.patch(
+	"/votes/:id",
+	getAuth,
+	oneOf(
+		[
+			check("question").notEmpty(),
+			check("option.left").notEmpty(),
+			check("option.right").notEmpty(),
+			check("vote_result").notEmpty()
+		],
+		{
+			message:
+				"Please provide at least one of the following: question, option, vote"
+		}
+	),
+	[
+		check("id").trim().notEmpty().withMessage("id con not set empty value"),
+		check("question")
+			.optional()
+			.notEmpty()
+			.withMessage("Question con not set empty value"),
+		check("option.left")
+			.optional()
+			.notEmpty()
+			.withMessage("Option left con not set empty value"),
+		check("option.right")
+			.optional()
+			.notEmpty()
+			.withMessage("Option right con not set empty value"),
+		check("vote_result")
+			.optional()
+			.notEmpty()
+			.custom((value) => {
+				if (value !== "left" && value !== "right") {
+					return false
+				}
+				return true
+			})
+			.withMessage("vote only can be 'left' or 'right'")
+	],
+	nextValidatorError,
+	votesControllers.patchVote
+)
+router.delete(
+	"/votes/:id",
+	checkAuthAdmin,
+	[check("id").trim().notEmpty().withMessage("id con not set empty value")],
+	nextValidatorError,
+	votesControllers.deleteVote
+)
 
 // 占卜、工程師幹話、名言、脫離PUA
 router.get("/fortunes", fortuneControllers.getTypes)
@@ -81,13 +146,13 @@ router.patch(
 		message: "Both the image and the result cannot be empty"
 	}),
 	[
-		(check("type")
+		check("type")
 			.trim()
 			.notEmpty()
 			.withMessage("type con not set empty value"),
 		check("id").trim().notEmpty().withMessage("id con not set empty value"),
 		check("image").optional().notEmpty(),
-		check("result").optional().notEmpty())
+		check("result").optional().notEmpty()
 	],
 	nextValidatorError,
 	fortuneControllers.patchTypeItem
@@ -97,11 +162,11 @@ router.delete(
 	"/fortunes/:type/:id",
 	checkAuthAdmin,
 	[
-		(check("type")
+		check("type")
 			.trim()
 			.notEmpty()
 			.withMessage("type con not set empty value"),
-		check("id").trim().notEmpty().withMessage("id con not set empty value"))
+		check("id").trim().notEmpty().withMessage("id con not set empty value")
 	],
 	nextValidatorError,
 	fortuneControllers.deleteTypeItem

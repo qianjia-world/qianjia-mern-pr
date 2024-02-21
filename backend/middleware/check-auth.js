@@ -18,9 +18,11 @@ const getAuth = (req, res, next) => {
 
 	let decodedToken
 	try {
-		decodedToken = jwt.verify(code, process.env.JWT_KEY)
+		decodedToken = jwt.verify(token, process.env.JWT_KEY)
 	} catch (error) {
-		return next()
+		return next(
+			new HttpError("Authentication failed, please login again", 401)
+		)
 	}
 
 	req.authData = {
