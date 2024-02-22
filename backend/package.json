@@ -4,6 +4,7 @@
   "description": "qianjia-mern-project",
   "main": "app.js",
   "scripts": {
+    "ws": "nodemon ws-example.js",
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node app.js"
@@ -18,7 +19,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "6.3",
     "mongoose": "^8.1.2",
-    "mongoose-unique-validator": "^5.0.0"
+    "mongoose-unique-validator": "^5.0.0",
+    "ws": "^8.16.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
