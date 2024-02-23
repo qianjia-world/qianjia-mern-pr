@@ -1,0 +1,1011 @@
+<!doctype html>
+<html class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="../src/asset/css/output.css" rel="stylesheet" />
+
+    <script src="../src/asset/js/menu.js" defer></script>
+    <script src="../src/asset/js/backToTop.js" defer></script>
+    <script src="../src/asset/js/coverAd.js" defer></script>
+    <title>標題</title>
+    <!-- indexjs -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+      async
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <script defer type="module" src="../src/asset/js/index.js"></script>
+  </head>
+  <body class="relative min-h-screen w-full overflow-x-hidden" id="top">
+    <!-- coverAd -->
+    <!-- 隱藏的話id="coverAd"的元素 class 加hidden -->
+    <div
+      id="coverAd"
+      class="mx-autos absolute z-[1100] h-full w-full justify-center bg-black/50"
+    >
+      <div class="flex h-screen w-full items-center justify-center">
+        <a
+          href="#"
+          id="coverAdContent"
+          class="relative aspect-square w-full max-w-[600px] bg-[length:100%_100%] bg-center bg-no-repeat"
+          style="
+            background-image: url(../src/asset/image/activityContentImg.jpg);
+          "
+        >
+          <img
+            id="coverAdCloseBtn"
+            src="../src/asset/image/coverAdcloseIcon.png"
+            alt=""
+            class="absolute right-[10px] top-[10px] h-[15px] w-[15px]"
+          />
+        </a>
+      </div>
+    </div>
+    <!-- top-bar -->
+    <div
+      class="relative z-[1050] w-full bg-white shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1)]"
+    >
+      <div
+        class="mx-auto flex h-[32px] max-w-[1440px] items-stretch justify-end"
+      >
+        <div
+          class="group relative z-[1050] mr-[20px] flex cursor-pointer items-center xl:mr-[120px]"
+        >
+          <span
+            class="mr-[8px] text-[14px] font-[400] leading-[20.72px] text-[#525252]"
+            >Language</span
+          >
+          <img
+            src="../src/asset/image/topBarIcon.png"
+            class="mt-[2px] h-[6px] w-[11px]"
+            alt=""
+          />
+
+          <ul
+            class="absolute right-0 top-[30px] z-20 me-1 hidden min-w-[80px] flex-col rounded-sm bg-white shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)] group-hover:flex"
+          >
+            <li
+              class="mr-[8px] flex w-full items-center px-4 py-2 text-[14px] font-[400] leading-[20.72px] text-[#525252] hover:text-fifth"
+            >
+              Chinese
+            </li>
+            <li
+              class="mr-[8px] flex w-full items-center px-4 py-2 text-[14px] font-[400] leading-[20.72px] text-[#525252] hover:text-fifth"
+            >
+              English
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- menu -->
+    <!-- 
+      1. 註冊/登入 or 會員中心 要顯示的class加 flex 不顯示的 class加hidden
+      ex：現在隱藏註冊/登入 顯示會員中心
+      2. 顯示當前menu紅字  字的class 加 text-fifth 
+      ex 首頁
+      3. 按下去href="#"的 現在還沒有頁面
+      4. 有幾頁會導同一頁，因為版面格式相同
+      ex 祈福活動的 現正進行/歷史活動;關於如願 理念與簡介/如願精神
+    -->
+    <div class="top-[32px] w-full bg-white">
+      <div
+        class="relative mx-auto flex h-[79px] max-w-[1440px] items-stretch justify-between"
+      >
+        <div class="flex items-center justify-center">
+          <a
+            href="../src/index.html"
+            class="ml-[20px] h-[40px] w-[173px] bg-cover bg-center bg-no-repeat sm:h-[48px] sm:w-[204px] xl:ml-[120px]"
+            style="
+              background-image: url(&quot;../src/asset/image/logo.jpg&quot;);
+            "
+          ></a>
+        </div>
+        <ul
+          id="toggleMenuBtnTarget"
+          class="absolute top-[79px] z-[1000] mr-[20px] hidden w-full flex-col bg-white pb-[20px] lg:static lg:flex lg:w-auto lg:flex-row lg:items-stretch lg:justify-end lg:pb-0 xl:mr-[120px]"
+        >
+          <li
+            class="group relative mx-5 flex cursor-pointer flex-col items-stretch px-0 hover:text-fifth lg:mx-0 lg:items-center lg:justify-center lg:px-[14px] lg:py-2"
+          >
+            <div
+              class="flex w-full justify-between border-b border-[#D9D9D9] py-3 lg:border-none lg:py-0"
+            >
+              <a
+                href="../src/index.html"
+                class="text-[17px] leading-[25.16px] text-fifth"
+                >首頁</a
+              >
+            </div>
+          </li>
+          <li
+            class="group relative mx-5 flex cursor-pointer flex-col items-stretch px-0 hover:text-fifth lg:mx-0 lg:items-center lg:justify-center lg:px-[14px] lg:py-2"
+          >
+            <div
+              id="toggleAboutBtn"
+              class="flex w-full justify-between border-b border-[#D9D9D9] py-3 lg:border-none lg:py-0"
+            >
+              <a class="text-[17px] font-[400] leading-[25.16px]">關於如願</a>
+              <a
+                class="arrow block h-[20px] w-[20px] cursor-pointer bg-[url('../../../src/asset/image/arrow-right-s-line.svg')] lg:hidden"
+              ></a>
+            </div>
+            <div
+              id="toggleAboutBtnTarget"
+              class="left-0 top-[79px] z-10 hidden flex-col rounded-sm border-primary bg-white pl-5 lg:absolute lg:me-1 lg:w-max lg:min-w-[172px] lg:border-t-4 lg:px-[14px] lg:py-[10px] lg:shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)] lg:group-hover:flex"
+            >
+              <a
+                href="../src/aboutSpirit.html"
+                class="flex w-full items-center border-b border-[#D9D9D9] py-3 text-[17px] leading-[25.16px] text-black hover:bg-white hover:text-fifth lg:border-none lg:py-[10px]"
+              >
+                理念與簡介
+              </a>
+              <a
+                href="../src/aboutSpirit.html"
+                class="flex w-full items-center border-b border-[#D9D9D9] py-3 text-[17px] leading-[25.16px] text-black hover:bg-white hover:text-fifth lg:border-none lg:py-[10px]"
+              >
+                如願精神
+              </a>
+            </div>
+          </li>
+          <li
+            class="group relative mx-5 flex cursor-pointer flex-col items-stretch px-0 hover:text-fifth lg:mx-0 lg:items-center lg:justify-center lg:px-[14px] lg:py-2"
+          >
+            <div
+              id="toggleActivityPreviewBtn"
+              class="flex w-full justify-between border-b border-[#D9D9D9] py-3 lg:border-none lg:py-0"
+            >
+              <a class="text-[17px] leading-[25.16px]">最新消息</a>
+              <a
+                class="arrow block h-[20px] w-[20px] cursor-pointer bg-[url('../../../src/asset/image/arrow-right-s-line.svg')] lg:hidden"
+              ></a>
+            </div>
+            <div
+              id="toggleActivityPreviewBtnTarget"
+              class="left-0 top-[79px] z-10 hidden flex-col rounded-sm border-primary bg-white pl-5 lg:absolute lg:me-1 lg:w-max lg:min-w-[172px] lg:border-t-4 lg:px-[14px] lg:py-[10px] lg:shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)] lg:group-hover:flex"
+            >
+              <a
+                href="../src/newsActivityPreview.html"
+                class="flex w-full items-center border-b border-[#D9D9D9] py-3 text-[17px] leading-[25.16px] text-black hover:bg-white hover:text-fifth lg:border-none lg:py-[10px]"
+              >
+                活動預告
+              </a>
+              <a
+                href="../src/newsActivityPreview.html"
+                class="flex w-full items-center border-b border-[#D9D9D9] py-3 text-[17px] leading-[25.16px] text-black hover:bg-white hover:text-fifth lg:border-none lg:py-[10px]"
+              >
+                宗教新聞
+              </a>
+              <a
+                href="../src/newsActivityPreview.html"
+                class="flex w-full items-center border-b border-[#D9D9D9] py-3 text-[17px] leading-[25.16px] text-black hover:bg-white hover:text-fifth lg:border-none lg:py-[10px]"
+              >
+                神明聖誕
+              </a>
+            </div>
+          </li>
+          <li
+            class="group relative mx-5 flex cursor-pointer flex-col items-stretch px-0 hover:text-fifth lg:mx-0 lg:items-center lg:justify-center lg:px-[14px] lg:py-2"
+          >
+            <div
+              id="togglePrayItem"
+              class="flex w-full justify-between border-b border-[#D9D9D9] py-3 lg:border-none lg:py-0"
+            >
+              <a class="text-[17px] leading-[25.16px]">祈福項目</a>
+              <a
+                class="arrow block h-[20px] w-[20px] cursor-pointer bg-[url('../../../src/asset/image/arrow-right-s-line.svg')] lg:hidden"
+              ></a>
+            </div>
+            <div
+              id="togglePrayItemTarget"
+              class="left-0 top-[79px] z-10 hidden flex-col rounded-sm border-primary bg-white pl-5 lg:absolute lg:me-1 lg:w-max lg:min-w-[172px] lg:border-t-4 lg:px-[14px] lg:py-[10px] lg:shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)] lg:group-hover:flex"
+            >
+              <a
+                href="../src/prayGodInfo.html"
+                class="flex w-full items-center border-b border-[#D9D9D9] py-3 text-[17px] leading-[25.16px] text-black hover:bg-white hover:text-fifth lg:border-none lg:py-[10px]"
+              >
+                神系介紹
+              </a>
+              <a
+                href="../src/prayCategory.html"
+                class="flex w-full items-center border-b border-[#D9D9D9] py-3 text-[17px] leading-[25.16px] text-black hover:bg-white hover:text-fifth lg:border-none lg:py-[10px]"
+              >
+                祈福類別
+              </a>
+              <a
+                href="../src/prayCloudAndSharing.html"
+                class="flex w-full items-center border-b border-[#D9D9D9] py-3 text-[17px] leading-[25.16px] text-black hover:bg-white hover:text-fifth lg:border-none lg:py-[10px]"
+              >
+                雲端祝福、感應分享
+              </a>
+              <a
+                href="#"
+                class="flex w-full items-center border-b border-[#D9D9D9] py-3 text-[17px] leading-[25.16px] text-black hover:bg-white hover:text-fifth lg:border-none lg:py-[10px]"
+              >
+                祈福共修
+              </a>
+            </div>
+          </li>
+          <li
+            class="group relative mx-5 flex cursor-pointer flex-col items-stretch px-0 hover:text-fifth lg:mx-0 lg:items-center lg:justify-center lg:px-[14px] lg:py-2"
+          >
+            <div
+              class="flex w-full justify-between border-b border-[#D9D9D9] py-3 lg:border-none lg:py-0"
+            >
+              <a class="text-[17px] leading-[25.16px]" href="#">謝平安法會</a>
+            </div>
+          </li>
+          <li
+            class="group relative mx-5 flex cursor-pointer flex-col items-stretch px-0 hover:text-fifth lg:mx-0 lg:items-center lg:justify-center lg:px-[14px] lg:py-2"
+          >
+            <div
+              id="togglePrayActivity"
+              class="flex w-full justify-between border-b border-[#D9D9D9] py-3 lg:border-none lg:py-0"
+            >
+              <a class="text-[17px] leading-[25.16px]">祈福活動</a>
+              <a
+                class="arrow block h-[20px] w-[20px] cursor-pointer bg-[url('../../../src/asset/image/arrow-right-s-line.svg')] lg:hidden"
+              ></a>
+            </div>
+            <div
+              id="togglePrayActivityTarget"
+              class="left-0 top-[79px] z-10 hidden flex-col rounded-sm border-primary bg-white pl-5 lg:absolute lg:me-1 lg:w-max lg:min-w-[172px] lg:border-t-4 lg:px-[14px] lg:py-[10px] lg:shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)] lg:group-hover:flex"
+            >
+              <a
+                href="../src/activityNow.html"
+                class="flex w-full items-center border-b border-[#D9D9D9] py-3 text-[17px] leading-[25.16px] text-black hover:bg-white hover:text-fifth lg:border-none lg:py-[10px]"
+              >
+                現正進行
+              </a>
+              <a
+                href="../src/activityNow.html"
+                class="flex w-full items-center border-b border-[#D9D9D9] py-3 text-[17px] leading-[25.16px] text-black hover:bg-white hover:text-fifth lg:border-none lg:py-[10px]"
+              >
+                歷史活動
+              </a>
+            </div>
+          </li>
+          <li
+            class="group relative mx-5 flex cursor-pointer flex-col items-stretch px-0 hover:text-fifth lg:mx-0 lg:items-center lg:justify-center lg:px-[14px] lg:py-2"
+          >
+            <div
+              class="flex w-full justify-between border-b border-[#D9D9D9] py-3 lg:border-none lg:py-0"
+            >
+              <a
+                href="../src/contactUs.html"
+                class="block w-full text-[17px] leading-[25.16px]"
+                >聯絡我們</a
+              >
+            </div>
+          </li>
+          <li
+            class="group relative mx-5 flex cursor-pointer flex-col items-stretch px-0 hover:text-fifth lg:mx-0 lg:items-center lg:justify-center lg:py-2 lg:pl-[14px] lg:pr-0"
+          >
+            <div
+              class="flex w-full justify-between border-b border-[#D9D9D9] py-3 lg:border-none lg:py-0"
+            >
+              <a
+                class="text-[17px] leading-[25.16px]"
+                href="../src/memberEvent.html"
+                >會員中心</a
+              >
+            </div>
+          </li>
+          <li
+            class="group relative mx-5 hidden cursor-pointer flex-col items-stretch px-0 hover:text-fifth lg:mx-0 lg:items-center lg:justify-center lg:px-[14px] lg:pl-[14px] lg:pr-0"
+          >
+            <div
+              class="flex w-full justify-between border-b border-[#D9D9D9] py-3 lg:border-none lg:py-0"
+            >
+              <a
+                href="../src/login.html"
+                class="block w-full text-[17px] leading-[25.16px]"
+                >註冊/登入</a
+              >
+            </div>
+          </li>
+        </ul>
+
+        <div
+          class="mx-[20px] flex cursor-pointer items-center justify-center lg:hidden"
+        >
+          <img
+            id="toggleMenuBtn"
+            src="../src/asset/image/menu-line.png"
+            class="h-[24px] w-[26px] sm:h-[36px] sm:w-[36px]"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <!-- carousel -->
+    <div class="w-full">
+      <!-- Slider main container -->
+      <div
+        class="swiper swiperCarousel swiperCarouselConfig h-auto w-full bg-secondary"
+      >
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <img
+              class="w-full"
+              src="../src/asset/image/indexCarousel.jpg"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <div class="swiper-slide">
+            <img
+              class="w-full"
+              src="../src/asset/image/indexCarousel2.png"
+              alt=""
+              srcset=""
+            />
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+    <!-- urgentPrayer -->
+    <div
+      class="relative w-full overflow-hidden pb-[47px] pt-[38px]"
+      style="
+        background-image: url(&quot;../src/asset/image/urgentPrayerBg.png&quot;);
+      "
+    >
+      <div
+        class="wow fadeInUp phone-heading relative z-[100] mx-auto flex aspect-[413/96] w-full max-w-[300px] items-center justify-center bg-contain bg-center bg-no-repeat tracking-widest text-[#212529] sm:max-w-[413px] sm:text-[32px]"
+        style="
+          background-image: url(&quot;../src/asset/image/urgentPrayerHeading.png&quot;);
+        "
+      >
+        緊急祈福
+      </div>
+      <p
+        class="wow fadeInUp relative z-[100] mx-auto mt-[10px] w-full max-w-[486px] px-[60px] text-[17px] font-[400] leading-[25.16px] text-[#4D4D4D] sm:px-0"
+      >
+        原四車天次怕枝古帶水水丟院半玩鼻走至要，動紅院升真坐兩冒員氣借開，士吃福冒帶水水丟院半玩鼻走至要，動紅院升真
+      </p>
+      <a
+        href="#"
+        class="wow fadeInUp relative z-[100] mx-auto mt-[24px] flex h-[48px] w-[136px] items-center justify-center rounded-[50px] bg-third text-[18px] font-[400] leading-[26.64px] text-white"
+        >前往祈福</a
+      >
+      <div
+        class="wow fadeInLeft absolute -left-[350px] top-[130px] max-w-[530px] sm:-left-[250px] sm:-top-[10px] lg:left-0"
+      >
+        <img
+          src="../src/asset/image/urgentPrayerDecor1.png"
+          alt=""
+          class="w-full"
+          srcset="../src/asset/image/urgentPrayerDecor1.png"
+        />
+      </div>
+      <div
+        class="wow fadeInRight absolute -right-[300px] -top-[30px] max-w-[530px] sm:-right-[250px] sm:-top-[50px] lg:right-0"
+      >
+        <img
+          src="../src/asset/image/urgentPrayerDecor2.png"
+          alt=""
+          class="w-full"
+          srcset="../src/asset/image/urgentPrayerDecor2.png"
+        />
+      </div>
+    </div>
+    <!-- god info -->
+    <div class="relative w-full bg-secondary">
+      <div
+        class="mx-auto flex max-w-[1440px] flex-col items-center px-[20px] py-[56px] sm:px-[60px] lg:px-[120px]"
+      >
+        <div class="flex items-center justify-center pb-[56px] text-fourth">
+          <span
+            class="wow fadeInLeft mr-[26px] block h-[35px] w-[66px] bg-cover bg-center bg-no-repeat sm:mr-[31px] sm:h-[43px] sm:w-[81px]"
+            style="
+              background-image: url(&quot;../src/asset/image/indexTextDecor1.png&quot;);
+            "
+          ></span>
+          <h2 class="wow fadeInUp phone-heading heading">神系介紹</h2>
+          <span
+            class="wow fadeInRight ml-[26px] block h-[35px] w-[66px] bg-cover bg-center bg-no-repeat sm:ml-[31px] sm:h-[43px] sm:w-[81px]"
+            style="
+              background-image: url(&quot;../src/asset/image/indexTextDecor2.png&quot;);
+            "
+          ></span>
+        </div>
+
+        <div class="swiperGodInfoConfig relative w-full px-[40px]">
+          <div class="wow fadeInUp swiper swiperGodInfo mb-[56px] w-full">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="../src/asset/image/indexGodinfo.png"
+                  alt=""
+                  srcset="../src/asset/image/indexGodinfo.png"
+                  class="mx-auto w-full max-w-[238px]"
+                />
+                <h3 class="heading2 mb-[10px] mt-[7px] flex justify-center">
+                  神系一
+                </h3>
+                <p class="text-[16px] leading-[23.68px]">
+                  介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+                </p>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="../src/asset/image/indexGodinfo.png"
+                  alt=""
+                  srcset="../src/asset/image/indexGodinfo.png"
+                  class="mx-auto w-full max-w-[238px]"
+                />
+                <h3 class="heading2 mb-[10px] mt-[7px] flex justify-center">
+                  神系一
+                </h3>
+                <p class="text-[16px] leading-[23.68px]">
+                  介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+                </p>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="../src/asset/image/indexGodinfo.png"
+                  alt=""
+                  srcset="../src/asset/image/indexGodinfo.png"
+                  class="mx-auto w-full max-w-[238px]"
+                />
+                <h3 class="heading2 mb-[10px] mt-[7px] flex justify-center">
+                  神系一
+                </h3>
+                <p class="text-[16px] leading-[23.68px]">
+                  介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+                </p>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="../src/asset/image/indexGodinfo.png"
+                  alt=""
+                  srcset="../src/asset/image/indexGodinfo.png"
+                  class="mx-auto w-full max-w-[238px]"
+                />
+                <h3 class="heading2 mb-[10px] mt-[7px] flex justify-center">
+                  神系一
+                </h3>
+                <p class="text-[16px] leading-[23.68px]">
+                  介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+                </p>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="../src/asset/image/indexGodinfo.png"
+                  alt=""
+                  srcset="../src/asset/image/indexGodinfo.png"
+                  class="mx-auto w-full max-w-[238px]"
+                />
+                <h3 class="heading2 mb-[10px] mt-[7px] flex justify-center">
+                  神系一
+                </h3>
+                <p class="text-[16px] leading-[23.68px]">
+                  介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+                </p>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="../src/asset/image/indexGodinfo.png"
+                  alt=""
+                  srcset="../src/asset/image/indexGodinfo.png"
+                  class="mx-auto w-full max-w-[238px]"
+                />
+                <h3 class="heading2 mb-[10px] mt-[7px] flex justify-center">
+                  神系一
+                </h3>
+                <p class="text-[16px] leading-[23.68px]">
+                  介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+                </p>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="../src/asset/image/indexGodinfo.png"
+                  alt=""
+                  srcset="../src/asset/image/indexGodinfo.png"
+                  class="mx-auto w-full max-w-[238px]"
+                />
+                <h3 class="heading2 mb-[10px] mt-[7px] flex justify-center">
+                  神系一
+                </h3>
+                <p class="text-[16px] leading-[23.68px]">
+                  介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+                </p>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="../src/asset/image/indexGodinfo.png"
+                  alt=""
+                  srcset="../src/asset/image/indexGodinfo.png"
+                  class="mx-auto w-full max-w-[238px]"
+                />
+                <h3 class="heading2 mb-[10px] mt-[7px] flex justify-center">
+                  神系一
+                </h3>
+                <p class="text-[16px] leading-[23.68px]">
+                  介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+        <div class="z-10">
+          <a
+            href="../src/prayGodInfo.html"
+            class="flex h-[48px] w-[136px] cursor-pointer items-center justify-center rounded-3xl bg-third text-[18px] leading-[26.64px] text-white"
+          >
+            查看更多
+          </a>
+        </div>
+      </div>
+      <div
+        class="wow fadeInLeft absolute bottom-[60px] left-0 hidden max-w-[358px] sm:block"
+      >
+        <img
+          src="../src/asset/image/indexBgDecor1.png"
+          alt=""
+          srcset="../src/asset/image/indexBgDecor1.png"
+        />
+      </div>
+      <div
+        class="wow fadeInRight absolute right-0 top-[19px] hidden max-w-[358px] sm:block"
+      >
+        <img
+          src="../src/asset/image/indexBgDecor2.png"
+          alt=""
+          srcset="../src/asset/image/indexBgDecor2.png"
+        />
+      </div>
+    </div>
+    <!-- latest news -->
+    <div
+      class="relative flex w-full bg-cover bg-center bg-no-repeat py-[41px] sm:py-[56px]"
+      style="
+        background-image: url(&quot;../src/asset/image/indexBgImg.jpg&quot;);
+      "
+    >
+      <div
+        class="mx-auto w-full max-w-[1440px] flex-col items-center px-[20px] sm:px-[60px] lg:px-[120px]"
+      >
+        <div class="flex items-center justify-center pb-[56px] text-fourth">
+          <span
+            class="wow fadeInLeft mr-[26px] block h-[35px] w-[66px] bg-cover bg-center bg-no-repeat sm:mr-[31px] sm:h-[43px] sm:w-[81px]"
+            style="
+              background-image: url(&quot;../src/asset/image/indexTextDecor1.png&quot;);
+            "
+          ></span>
+          <h2 class="wow fadeInUp phone-heading heading">最新消息</h2>
+          <span
+            class="wow fadeInRight ml-[26px] block h-[35px] w-[66px] bg-cover bg-center bg-no-repeat sm:ml-[31px] sm:h-[43px] sm:w-[81px]"
+            style="
+              background-image: url(&quot;../src/asset/image/indexTextDecor2.png&quot;);
+            "
+          ></span>
+        </div>
+
+        <div
+          class="wow fadeInUp flex w-full flex-col justify-stretch pb-[41px] sm:pb-[56px]"
+        >
+          <a
+            href="../src/newsActivityPreview.html"
+            class="cursor-pointer items-end py-[20px] sm:py-[28px] md:flex"
+          >
+            <div class="text-[16px] leading-[23.68px] text-sixth md:mr-[60px]">
+              2023/06/29
+            </div>
+            <h3 class="heading3">點燈加持元神光彩，點燈加持元神光彩</h3>
+            <div
+              class="ml-auto hidden text-[16px] leading-[23.68px] text-sixth sm:block"
+            >
+              閱讀更多
+            </div>
+          </a>
+          <a
+            href="../src/newsActivityPreview.html"
+            class="cursor-pointer items-end border-t border-t-[#D4A662] py-[20px] sm:py-[28px] md:flex"
+          >
+            <div class="text-[16px] leading-[23.68px] text-sixth md:mr-[60px]">
+              2023/06/29
+            </div>
+            <h3 class="heading3">點燈加持元神光彩，點燈加持元神光彩</h3>
+            <div
+              class="ml-auto hidden text-[16px] leading-[23.68px] text-sixth sm:block"
+            >
+              閱讀更多
+            </div>
+          </a>
+          <a
+            href="../src/newsActivityPreview.html"
+            class="cursor-pointer items-end border-t border-t-[#D4A662] py-[20px] sm:py-[28px] md:flex"
+          >
+            <div class="text-[16px] leading-[23.68px] text-sixth md:mr-[60px]">
+              2023/06/29
+            </div>
+            <h3 class="heading3">點燈加持元神光彩，點燈加持元神光彩</h3>
+            <div
+              class="ml-auto hidden text-[16px] leading-[23.68px] text-sixth sm:block"
+            >
+              閱讀更多
+            </div>
+          </a>
+          <a
+            href="../src/newsActivityPreview.html"
+            class="cursor-pointer items-end border-t border-t-[#D4A662] py-[20px] sm:py-[28px] md:flex"
+          >
+            <div class="text-[16px] leading-[23.68px] text-sixth md:mr-[60px]">
+              2023/06/29
+            </div>
+            <h3 class="heading3">點燈加持元神光彩，點燈加持元神光彩</h3>
+            <div
+              class="ml-auto hidden text-[16px] leading-[23.68px] text-sixth sm:block"
+            >
+              閱讀更多
+            </div>
+          </a>
+          <a
+            href="../src/newsActivityPreview.html"
+            class="cursor-pointer items-end border-b border-t border-b-[#D4A662] border-t-[#D4A662] py-[20px] sm:border-b-0 sm:py-[28px] md:flex"
+          >
+            <div class="text-[16px] leading-[23.68px] text-sixth md:mr-[60px]">
+              2023/06/29
+            </div>
+            <div class="heading3">點燈加持元神光彩，點燈加持元神光彩</div>
+            <div
+              class="ml-auto hidden text-[16px] leading-[23.68px] text-sixth sm:block"
+            >
+              閱讀更多
+            </div>
+          </a>
+        </div>
+
+        <div class="flex justify-center">
+          <a
+            href="../src/newsActivityPreview.html"
+            class="flex h-[48px] w-[136px] cursor-pointer items-center justify-center rounded-3xl bg-third text-[18px] leading-[26.64px] text-white"
+          >
+            查看更多
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- your wishes info -->
+    <div class="relative flex w-full bg-primary py-[56px]">
+      <div
+        class="mx-auto w-full max-w-[1440px] flex-col items-center px-[20px] sm:px-[60px] xl:px-[120px]"
+      >
+        <div class="flex items-center justify-center pb-[56px] text-third">
+          <span
+            class="wow fadeInLeft mr-[26px] block h-[35px] w-[66px] bg-cover bg-center bg-no-repeat sm:mr-[31px] sm:h-[43px] sm:w-[81px]"
+            style="
+              background-image: url(&quot;../src/asset/image/indexTextDecor1.png&quot;);
+            "
+          ></span>
+          <h2 class="wow fadeInUp phone-heading heading">如願介紹</h2>
+          <span
+            class="wow fadeInRight ml-[26px] block h-[35px] w-[66px] bg-cover bg-center bg-no-repeat sm:ml-[31px] sm:h-[43px] sm:w-[81px]"
+            style="
+              background-image: url(&quot;../src/asset/image/indexTextDecor2.png&quot;);
+            "
+          ></span>
+        </div>
+
+        <ul
+          class="wow fadeInUp z-10 grid grid-cols-1 gap-[3rem] pb-[56px] sm:grid-cols-2 lg:grid-cols-4"
+        >
+          <li class="flex flex-col items-stretch">
+            <img
+              src="../src/asset/image/indexWishInfo1.png"
+              alt=""
+              srcset="../src/asset/image/indexWishInfo1.png"
+              class="mx-auto flex w-full max-w-[250px]"
+            />
+            <h3
+              class="heading2 mb-[20px] mt-[34px] flex justify-center text-third"
+            >
+              點燈加持元神光彩
+            </h3>
+            <p class="text-center text-[16px] leading-[23.52px] text-white">
+              介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+            </p>
+          </li>
+          <li class="flex flex-col items-stretch">
+            <img
+              src="../src/asset/image/indexWishInfo2.png"
+              alt=""
+              srcset="../src/asset/image/indexWishInfo2.png"
+              class="mx-auto flex w-full max-w-[250px]"
+            />
+            <h3
+              class="heading2 mb-[20px] mt-[34px] flex justify-center text-third"
+            >
+              點燈加持元神光彩
+            </h3>
+            <p class="text-center text-[16px] leading-[23.52px] text-white">
+              介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+            </p>
+          </li>
+          <li class="flex flex-col items-stretch">
+            <img
+              src="../src/asset/image/indexWishInfo3.png"
+              alt=""
+              srcset="../src/asset/image/indexWishInfo3.png"
+              class="mx-auto flex w-full max-w-[250px]"
+            />
+            <h3
+              class="heading2 mb-[20px] mt-[34px] flex justify-center text-third"
+            >
+              點燈加持元神光彩
+            </h3>
+            <p class="text-center text-[16px] leading-[23.52px] text-white">
+              介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+            </p>
+          </li>
+          <li class="flex flex-col items-stretch">
+            <img
+              src="../src/asset/image/indexWishInfo4.png"
+              alt=""
+              srcset="../src/asset/image/indexWishInfo4.png"
+              class="mx-auto flex w-full max-w-[250px]"
+            />
+            <h3
+              class="heading2 mb-[20px] mt-[34px] flex justify-center text-third"
+            >
+              點燈加持元神光彩
+            </h3>
+            <p class="text-center text-[16px] leading-[23.52px] text-white">
+              介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字
+            </p>
+          </li>
+        </ul>
+
+        <div class="flex justify-center">
+          <a
+            href="../src/aboutSpirit.html"
+            class="flex h-[48px] w-[136px] cursor-pointer items-center justify-center rounded-3xl bg-third text-[18px] leading-[26.64px] text-white"
+          >
+            查看更多
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- wondrful tidbits -->
+    <div
+      class="relative flex min-h-[700px] w-full flex-col items-center bg-secondary pb-[100px] pt-[56px]"
+    >
+      <div
+        class="z-[100] mx-auto w-full max-w-[1440px] flex-col items-center px-[20px] sm:px-[60px] lg:px-[120px]"
+      >
+        <div class="flex items-center justify-center pb-[56px] text-fourth">
+          <span
+            class="wow fadeInLeft mr-[26px] block h-[35px] w-[66px] bg-cover bg-center bg-no-repeat sm:mr-[31px] sm:h-[43px] sm:w-[81px]"
+            style="
+              background-image: url(&quot;../src/asset/image/indexTextDecor1.png&quot;);
+            "
+          ></span>
+          <h2 class="wow fadeInUp phone-heading heading">精彩花絮</h2>
+          <span
+            class="wow fadeInRight ml-[26px] block h-[35px] w-[66px] bg-cover bg-center bg-no-repeat sm:ml-[31px] sm:h-[43px] sm:w-[81px]"
+            style="
+              background-image: url(&quot;../src/asset/image/indexTextDecor2.png&quot;);
+            "
+          ></span>
+        </div>
+
+        <ul
+          class="wow fadeInUp grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3"
+        >
+          <li class="flex cursor-pointer flex-col items-stretch">
+            <img
+              src="../src/asset/image/indexHighlights1.jpg"
+              alt=""
+              srcset="../src/asset/image/indexHighlights1.jpg"
+              class="tidbitsImgs aspect-video w-full object-cover sm:aspect-auto sm:h-full"
+            />
+          </li>
+          <li class="flex cursor-pointer flex-col items-stretch">
+            <img
+              src="../src/asset/image/indexCarousel.jpg"
+              alt=""
+              srcset="../src/asset/image/indexCarousel.jpg"
+              class="tidbitsImgs aspect-video w-full object-cover sm:aspect-auto sm:h-full"
+            />
+          </li>
+          <li class="flex cursor-pointer flex-col items-stretch">
+            <img
+              src="../src/asset/image/aboutBanner.jpg"
+              alt=""
+              srcset="../src/asset/image/aboutBanner.jpg"
+              class="tidbitsImgs aspect-video w-full object-cover sm:aspect-auto sm:h-full"
+            />
+          </li>
+          <li class="flex cursor-pointer flex-col items-stretch">
+            <img
+              src="../src/asset/image/indexHighlights1.jpg"
+              alt=""
+              srcset="../src/asset/image/indexHighlights1.jpg"
+              class="tidbitsImgs aspect-video w-full object-cover sm:aspect-auto sm:h-full"
+            />
+          </li>
+          <li class="flex cursor-pointer flex-col items-stretch">
+            <img
+              src="../src/asset/image/indexHighlights1.jpg"
+              alt=""
+              srcset="../src/asset/image/indexHighlights1.jpg"
+              class="tidbitsImgs aspect-video w-full object-cover sm:aspect-auto sm:h-full"
+            />
+          </li>
+          <li class="flex cursor-pointer flex-col items-stretch">
+            <img
+              src="../src/asset/image/indexHighlights1.jpg"
+              alt=""
+              srcset="../src/asset/image/indexHighlights1.jpg"
+              class="tidbitsImgs aspect-video w-full object-cover sm:aspect-auto sm:h-full"
+            />
+          </li>
+        </ul>
+      </div>
+
+      <div class="wow fadeInLeft absolute bottom-[60px] left-0 max-w-[358px]">
+        <img
+          src="../src/asset/image/indexBgDecor1.png"
+          alt=""
+          srcset="../src/asset/image/indexBgDecor1.png"
+        />
+      </div>
+      <div class="wow fadeInRight absolute right-0 top-[19px] max-w-[358px]">
+        <img
+          src="../src/asset/image/indexBgDecor2.png"
+          alt=""
+          srcset="../src/asset/image/indexBgDecor2.png"
+        />
+      </div>
+    </div>
+    <!-- wondrful modal -->
+    <div
+      id="modalMask"
+      class="mx-autos fixed left-0 top-0 z-[1100] hidden h-screen w-screen items-center justify-center overflow-auto bg-black/80"
+    >
+      <img
+        id="covertidbitsImg"
+        src="../src/asset/image/indexHighlights1.jpg"
+        alt=""
+        srcset=""
+        class="bg-contain bg-center bg-no-repeat"
+      />
+    </div>
+    <!-- footer -->
+    <div class="w-full bg-[#C78434]">
+      <div
+        class="mx-auto grid max-w-[1440px] grid-cols-1 gap-y-[50px] px-[20px] pb-[40px] pt-[20px] sm:px-[60px] sm:py-[50px] md:grid-cols-2 lg:px-[120px]"
+      >
+        <ul
+          class="grid grid-flow-col grid-rows-5 gap-x-1 gap-y-[15px] sm:grid-rows-4 sm:gap-y-[13px]"
+        >
+          <li class="cursor-pointer font-normal text-white">
+            <a
+              href="../src/index.html"
+              class="text-[16px] leading-[23.68px] sm:text-[17px] sm:leading-[25.16px]"
+              >首頁</a
+            >
+          </li>
+          <li class="cursor-pointer font-normal text-white">
+            <a
+              href="../src/aboutSpirit.html"
+              class="text-[16px] leading-[23.68px] sm:text-[17px] sm:leading-[25.16px]"
+              >關於如願</a
+            >
+          </li>
+          <li class="cursor-pointer font-normal text-white">
+            <a href="../src/newsActivityPreview.html">最新消息</a>
+          </li>
+          <li class="cursor-pointer font-normal text-white">
+            <a href="../src/prayGodInfo.html">祈福項目</a>
+          </li>
+
+          <li class="cursor-pointer font-normal text-white">
+            <a
+              href="#"
+              class="text-[16px] leading-[23.68px] sm:text-[17px] sm:leading-[25.16px]"
+              >謝平安法會</a
+            >
+          </li>
+          <li class="cursor-pointer font-normal text-white">
+            <a
+              href="../src/activityNow.html"
+              class="text-[16px] leading-[23.68px] sm:text-[17px] sm:leading-[25.16px]"
+              >祈福活動</a
+            >
+          </li>
+
+          <li class="cursor-pointer font-normal text-white">
+            <a href="../src/contactUs.html">聯絡我們</a>
+          </li>
+          <li class="cursor-pointer font-normal text-white">
+            <a
+              href="../src/memberEvent.html"
+              class="text-[16px] leading-[23.68px] sm:text-[17px] sm:leading-[25.16px]"
+              >會員中心</a
+            >
+          </li>
+          <li class="cursor-pointer font-normal text-white">
+            <a
+              href="../src/privacyPolicy.html"
+              class="text-[16px] leading-[23.68px] sm:text-[17px] sm:leading-[25.16px]"
+              >隱私權政策</a
+            >
+          </li>
+          <li class="cursor-pointer font-normal text-white">
+            <a
+              href="../src/privacyPolicy.html"
+              class="text-[16px] leading-[23.68px] sm:text-[17px] sm:leading-[25.16px]"
+              >使用者條款</a
+            >
+          </li>
+        </ul>
+        <div>
+          <div
+            class="mb-4 h-[83px] w-[150px] bg-cover bg-center bg-no-repeat"
+            style="
+              background-image: url(&quot;../src/asset/image/logo2.png&quot;);
+            "
+          ></div>
+          <p class="text-[15px] leading-[22.2px] text-white">
+            喜兄民安半十下苗樹。花彩這停奶下吃，安棵京固肉止乾都果平習起又您蝸直松南唱福，它坐邊三錯再丁結躲家文可頭家珠兆很
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- copyright -->
+    <div class="w-full bg-primary">
+      <div
+        class="mx-auto flex max-w-[1440px] flex-col justify-center px-[20px] py-[14px] sm:px-[60px] sm:py-[18px] md:flex-row md:items-center md:justify-between lg:px-[120px]"
+      >
+        <span class="text-[15px] leading-[22.2px] text-white"
+          >COPYRIGHTS © 2023 ALL RIGHTS RESERVED BY 如願祈福</span
+        >
+        <span class="mt-[7px] text-[15px] leading-[22.2px] text-white md:mt-0"
+          >客服電話 0800-667-333</span
+        >
+      </div>
+    </div>
+    <!-- backToTop -->
+    <a
+      href="#top"
+      id="backToTopButton"
+      class="wow fadeInUp fixed bottom-[20px] right-[20px] z-[1000] hidden h-[40px] w-[40px] items-center justify-center bg-primary sm:bottom-[40px] sm:right-[40px] lg:bottom-[80px]"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+      >
+        <path
+          fill="#ffffff"
+          d="M11.9997 10.8284L7.04996 15.7782L5.63574 14.364L11.9997 8L18.3637 14.364L16.9495 15.7782L11.9997 10.8284Z"
+        ></path>
+      </svg>
+    </a>
+  </body>
+</html>
