@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { Caveat } from "next/font/google";
 import Image from "next/image";
-
+import { cn } from "@/lib/utils";
 const caveat = Caveat({
   subsets: ["latin"],
 });
 
-export default function Logo() {
+export default function Logo({
+  imageStyle = "w-14 sm:w-20",
+  textStyle = "text-2xl",
+}) {
   return (
     <Link href={"/"} className="flex cursor-pointer items-center">
-      <div className="relative h-14 w-14 sm:h-20 sm:w-20">
+      <div className={cn("relative aspect-square ", imageStyle)}>
         <Image
           src={"/logo.gif"}
           fill
@@ -19,7 +22,7 @@ export default function Logo() {
           sizes="10vw"
         />
       </div>
-      <h1 className={`text-primary text-2xl italic ${caveat.className}`}>
+      <h1 className={cn("italic text-primary", caveat.className, textStyle)}>
         Mern-Qianjia-Project
       </h1>
     </Link>
