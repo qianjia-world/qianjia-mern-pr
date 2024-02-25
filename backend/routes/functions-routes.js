@@ -43,7 +43,7 @@ router.patch(
 		],
 		{
 			message:
-				"Please provide at least one of the following: question, option, vote"
+				"Please provide at least one of the following: question, option, vote_result"
 		}
 	),
 	[
