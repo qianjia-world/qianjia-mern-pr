@@ -6,10 +6,7 @@ const caveat = Caveat({
   subsets: ["latin"],
 });
 
-export default function Logo({
-  imageStyle = "w-14 sm:w-20",
-  textStyle = "text-2xl",
-}) {
+export default function Logo({ imageStyle = "w-14 sm:w-20", textStyle = "" }) {
   return (
     <Link href={"/"} className="flex cursor-pointer items-center">
       <div className={cn("relative aspect-square ", imageStyle)}>
