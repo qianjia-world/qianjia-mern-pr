@@ -13,7 +13,7 @@ export default function Vote() {
   const [springs, api] = useSpring(() => ({
     from: { width: "50%" },
   }));
-
+  const [isInit, setIsInit] = useState(true);
   useEffect(() => {
     const fetchVotes = async () => {
       try {
@@ -21,6 +21,7 @@ export default function Vote() {
           url: `${process.env.NEXT_PUBLIC_API}/functions/votes`,
         });
         setVotes(responseData.votes);
+        setIsInit(false);
       } catch (err) {}
     };
 
@@ -67,7 +68,7 @@ export default function Vote() {
       api.start({
         to: { width: `50%` },
       });
-    }, 3000);
+    }, 1000);
   };
 
   return (
@@ -75,9 +76,9 @@ export default function Vote() {
       <Wrap className="m-2 rounded-md bg-gradient-to-r from-yellow-300 to-yellow-400">
         <div className="flex h-80 flex-col p-7 text-center">
           <h4 className="mb-4 underline underline-offset-4 subpixel-antialiased ">
-            {votes.length > 0
-              ? votes[0].question
-              : "題目都回答完囉，沒有更多題目了~"}
+            {isInit && "問題載入中"}
+            {votes.length > 0 && votes[0].question}
+            {votes.length === 0 && !isInit && "題目都回答完囉，沒有更多題目了"}
           </h4>
 
           {votes.length > 0 && isResult && (
@@ -121,7 +122,9 @@ export default function Vote() {
               onClick={() => handleClick("right")}
               disabled={isResult || votes.length === 0}
             >
-              {votes.length > 0 ? votes[0].option.right : "感謝你的回答喵～"}
+              {isInit && "努力加載中..."}
+              {votes.length > 0 && votes[0].option.right}
+              {votes.length === 0 && !isInit && "感謝你的回答～"}
             </button>
           </div>
         </div>
