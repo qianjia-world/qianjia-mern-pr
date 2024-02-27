@@ -74,7 +74,7 @@ export default function Vote() {
   return (
     <>
       <Wrap className="m-2 rounded-md bg-gradient-to-r from-yellow-300 to-yellow-400">
-        <div className="flex h-80 flex-col p-7 text-center">
+        <section className="flex h-80 flex-col p-7 text-center">
           <h4 className="mb-4 underline underline-offset-4 subpixel-antialiased ">
             {isInit && "問題載入中"}
             {votes.length > 0 && votes[0].question}
@@ -127,7 +127,7 @@ export default function Vote() {
               {votes.length === 0 && !isInit && "感謝你的回答～"}
             </button>
           </div>
-        </div>
+        </section>
       </Wrap>
     </>
   );
