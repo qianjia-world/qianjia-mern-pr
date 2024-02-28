@@ -126,7 +126,7 @@ router.post(
 )
 router.post(
 	"/fortunes/:type",
-	checkAuthAdmin,
+	getAuth,
 	[
 		check("type")
 			.trim()
