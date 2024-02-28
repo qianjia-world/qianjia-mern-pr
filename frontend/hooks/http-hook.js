@@ -2,13 +2,12 @@ import { useState, useCallback, useRef, useEffect } from "react";
 
 export const useHttpClient = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
-
+  const [apiMsg, setApiMsg] = useState();
+  // msg 包含後端回傳的訊息+錯誤訊息
   const activeHttpRequests = useRef([]);
 
   const sendRequest = useCallback(
     async ({ url, method = "GET", body = null, headers = {} }) => {
-
       setIsLoading(true);
       const httpAbortCtrl = new AbortController();
       activeHttpRequests.current.push(httpAbortCtrl);
@@ -32,10 +31,13 @@ export const useHttpClient = () => {
           throw new Error(responseData.message);
         }
 
+        if (responseData.message) {
+          setApiMsg(responseData.message);
+        }
         setIsLoading(false);
         return responseData;
       } catch (err) {
-        setError(err.message);
+        setApiMsg(err.message);
         setIsLoading(false);
         throw err;
       }
@@ -43,8 +45,8 @@ export const useHttpClient = () => {
     [],
   );
 
-  const clearError = () => {
-    setError(null);
+  const clearApiMsg = () => {
+    setApiMsg(null);
   };
 
   useEffect(() => {
@@ -54,5 +56,5 @@ export const useHttpClient = () => {
     };
   }, []);
 
-  return { isLoading, error, sendRequest, clearError };
+  return { isLoading, apiMsg, sendRequest, clearApiMsg };
 };

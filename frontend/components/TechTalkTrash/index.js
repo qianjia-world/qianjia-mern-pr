@@ -7,27 +7,21 @@ import Wrap from "@/components/shared/Wrap";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { AlertDialogDemo } from "@/components/shared/AlertDialog";
+import { ApiResultDialog } from "../shared/ApiResultDialog";
 export default function TechTalkTrash() {
   const [word, setWord] = useImmer({
     left: "",
     right: "",
     bottom: "",
   });
-  const [dialog, setDialog] = useImmer({
-    isOpen: false,
-    title: "",
-    content: "",
-  });
   const [submitMsg, setSubmitMsg] = useState("");
-
-  const { sendRequest } = useHttpClient();
+  const { apiMsg, clearApiMsg, sendRequest } = useHttpClient();
 
   async function handleOnClick(type) {
     if (word[type]) return;
 
     const requestData = {
-      url: `${process.env.NEXT_PUBLIC_API}/functions/fortunes/engineer/result`,
+      url: `${process.env.NEXT_PUBLIC_API}/functions/fortunes/engineer/result?not_msg=true`,
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -45,9 +39,8 @@ export default function TechTalkTrash() {
     }, 1000);
   }
 
-  async function handleOnSubmit() {
+  function handleOnSubmit() {
     if (!submitMsg) return;
-    console.log(submitMsg);
     const requestData = {
       url: `${process.env.NEXT_PUBLIC_API}/functions/fortunes/engineer`,
       method: "POST",
@@ -58,31 +51,16 @@ export default function TechTalkTrash() {
         "Content-Type": "application/json",
       },
     };
-    const responseData = await sendRequest(requestData);
-
-    setDialog((draft) => {
-      draft = {
-        isOpen: true,
-        title: "送出結果",
-        content: responseData.message,
-      };
-      return draft;
-    });
+    sendRequest(requestData);
   }
 
-  function handleOnOpenChange() {
-    setDialog((draft) => {
-      draft.isOpen = false;
-    });
-  }
   return (
     <Wrap>
-      <AlertDialogDemo
-        open={dialog.isOpen}
-        onOpenChange={handleOnOpenChange}
-        title={dialog.title}
-        content={dialog.content}
-      />
+      <ApiResultDialog
+        title="API訊息"
+        content={apiMsg}
+        onOpenChange={clearApiMsg}
+      ></ApiResultDialog>
       <section className="relative h-96 ">
         <Image
           src={"/techTalkTrash/bg.webp"}

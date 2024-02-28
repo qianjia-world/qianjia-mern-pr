@@ -9,15 +9,13 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
-export function AlertDialogDemo({ open, onOpenChange, title, content }) {
+export function ApiResultDialog({ onOpenChange, title, content }) {
   return (
-    <AlertDialog open={open} onOpenChange={onOpenChange}>
+    <AlertDialog open={content} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>{title}</AlertDialogTitle>
-          <AlertDialogDescription>
-            {content}
-          </AlertDialogDescription>
+          <AlertDialogDescription>{content}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>確定</AlertDialogCancel>

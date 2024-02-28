@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { useImmer } from "use-immer";
 import { useHttpClient } from "@/hooks/http-hook";
-import { AlertDialogDemo } from "@/components/shared/AlertDialog";
+import { ApiResultDialog } from "../shared/ApiResultDialog";
 import Wrap from "@/components/shared/Wrap";
 import FortuneItem from "./FortuneItem";
 import FortuneItemBg from "./FortuneItemBg";
@@ -36,12 +36,7 @@ const btnStatus = {
 
 export default function Fortune() {
   const [lightStatus, setLightStatus] = useImmer(initLightStatus);
-  const [dialog, setDialog] = useImmer({
-    isOpen: false,
-    title: "",
-    content: "",
-  });
-  const { sendRequest } = useHttpClient();
+  const { apiMsg, clearApiMsg, sendRequest } = useHttpClient();
 
   Object.keys(lightStatus).map((item) => {
     if (Object.values(lightStatus[item]).every((value) => value == true)) {
@@ -49,11 +44,6 @@ export default function Fortune() {
     }
   });
 
-  function handleOnOpenChange() {
-    setDialog((draft) => {
-      draft.isOpen = false;
-    });
-  }
   function handleLightClick(type, key) {
     setLightStatus((draft) => {
       Object.keys(lightStatus).map((item) => {
@@ -75,25 +65,15 @@ export default function Fortune() {
         "Content-Type": "application/json",
       },
     };
-    const responseData = await sendRequest(requestData);
-
-    setDialog((draft) => {
-      draft = {
-        isOpen: true,
-        title: "占卜結果",
-        content: responseData.data.result,
-      };
-      return draft;
-    });
+    sendRequest(requestData);
   }
 
   return (
     <Wrap className="m-2 rounded-md">
-      <AlertDialogDemo
-        open={dialog.isOpen}
-        onOpenChange={handleOnOpenChange}
-        title={dialog.title}
-        content={dialog.content}
+      <ApiResultDialog
+        onOpenChange={clearApiMsg}
+        title="結果"
+        content={apiMsg}
       />
       <section className="text-center">
         <div className="mb-2 border border-b-2 border-primary p-2">
