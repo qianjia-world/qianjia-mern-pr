@@ -19,6 +19,7 @@ const getTypes = async (req, res, next) => {
 
 const getResult = async (req, res, next) => {
 	const { type } = req.params
+	const { not_msg } = req.query
 
 	let typeData
 	try {
@@ -41,8 +42,14 @@ const getResult = async (req, res, next) => {
 	}
 
 	const randomIndex = Math.floor(Math.random() * typeData.list.length)
-
-	res.json({ data: typeData.list[randomIndex] })
+	if (not_msg) {
+		res.json({ data: typeData.list[randomIndex] })
+	} else {
+		res.json({
+			message: typeData.list[randomIndex].result,
+			data: typeData.list[randomIndex]
+		})
+	}
 }
 
 const getTypeItems = async (req, res, next) => {
