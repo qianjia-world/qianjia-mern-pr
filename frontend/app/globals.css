@@ -6,10 +6,10 @@
   h1 {
     @apply text-3xl lg:text-4xl;
   }
-  /* h2 {
+  h2 {
     @apply text-2xl lg:text-3xl;
   }
-  h3 {
+  /* h3 {
     @apply text-xl lg:text-2xl;
   } */
   h4 {
