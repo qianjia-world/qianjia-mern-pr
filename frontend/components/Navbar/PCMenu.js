@@ -7,15 +7,21 @@ export default function PCMenu({ data = [] }) {
         return (
           <li
             key={item.title}
-            className="hover:text-primary group relative flex items-center justify-center px-2"
+            className="group relative flex cursor-pointer items-stretch justify-center px-2 hover:text-primary"
           >
-            <Link href={item.href}>{item.title}</Link>
+            <Link className="flex items-center justify-center" href={item.href}>
+              {item.title}
+            </Link>
 
             {item.children.length > 0 && (
-              <ul className="border-primary absolute right-0 top-full hidden min-w-48 flex-col rounded-bl-xl rounded-br-md border-2 bg-white p-3 shadow-md group-hover:flex group-hover:text-black">
+              <ul className="absolute -right-5 top-full hidden min-w-48 flex-col rounded-bl-xl rounded-br-md border-2 border-primary bg-white p-3 shadow-md group-hover:flex group-hover:text-black">
                 {item.children.map((item) => {
                   return (
-                    <Link key={item.title} href={item.href} className="py-2">
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="py-2 hover:text-primary"
+                    >
                       {item.title}
                     </Link>
                   );
