@@ -11,23 +11,23 @@ const MenuData = [
   },
   {
     title: "功能",
-    href: "/function",
+    href: "/functions",
     children: [
       {
         title: "投票",
-        href: "/function/vote",
+        href: "/functions/vote",
       },
       {
         title: "占卜",
-        href: "/function/fortune",
+        href: "/functions/fortune",
       },
       {
         title: "主題式隨機語句觸發",
-        href: "/function/random",
+        href: "/functions/random-talk",
       },
       {
         title: "Websocket小遊戲",
-        href: "/function/websocket",
+        href: "/functions/ws",
       },
     ],
   },
@@ -52,7 +52,7 @@ const MenuData = [
     children: [
       {
         title: "會員管理",
-        href: "/user/profile",
+        href: "/user",
       },
       {
         title: "註冊",

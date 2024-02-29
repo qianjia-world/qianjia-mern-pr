@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 let ws;
-function Page() {
+export default function WebSocket() {
   const [msg, setMsg] = useState(null);
 
   function connect() {
@@ -58,5 +58,3 @@ function Page() {
     </div>
   );
 }
-
-export default Page;
