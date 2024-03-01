@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function PCMenu({ data = [] }) {
   return (
-    <ul className="hidden items-stretch lg:flex">
+    <ul className="z-10 hidden items-stretch lg:flex">
       {data.map((item) => {
         return (
           <li
