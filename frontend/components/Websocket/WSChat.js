@@ -4,7 +4,7 @@ import { useImmer } from "use-immer";
 import { cn } from "@/lib/utils";
 import Wrap from "@/components/shared/Wrap";
 
-export default function WSComponment() {
+export default function WSChat() {
   const [chat, setChat] = useImmer([]);
   const [msg, setMsg] = useState("");
   const [name, setName] = useState("");
@@ -58,7 +58,7 @@ export default function WSComponment() {
   return (
     <Wrap>
       <div className="h-page flex w-full flex-col items-stretch justify-stretch gap-y-2 bg-white px-2 py-2 text-black">
-        <h2 className="pb-1 text-center">WS sample1</h2>
+        <h2 className="pb-1 text-center">WS Chat</h2>
         <div className="flex-1 gap-y-1 overflow-y-scroll rounded-md bg-primary p-2">
           {chat.map((item, index) => {
             return (

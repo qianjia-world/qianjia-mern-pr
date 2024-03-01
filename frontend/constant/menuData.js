@@ -22,11 +22,11 @@ const MenuData = [
         href: "/functions/fortune",
       },
       {
-        title: "主題式隨機語句觸發",
+        title: "隨機主題語句",
         href: "/functions/random-talk",
       },
       {
-        title: "WS sample1",
+        title: "WS Chat",
         href: "/functions/ws",
       },
     ],

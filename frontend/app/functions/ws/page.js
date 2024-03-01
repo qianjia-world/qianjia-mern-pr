@@ -1,8 +1,8 @@
-import WSComponment from "@/components/Websocket/ws-sample1";
+import WSChat from "@/components/Websocket/WSChat";
 export default function FortunePage() {
   return (
     <>
-      <WSComponment />
+      <WSChat />
     </>
   );
 }
