@@ -26,7 +26,7 @@ const MenuData = [
         href: "/functions/random-talk",
       },
       {
-        title: "Websocket小遊戲",
+        title: "WS sample1",
         href: "/functions/ws",
       },
     ],
