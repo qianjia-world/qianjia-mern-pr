@@ -1,23 +1,44 @@
 "use client";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useState } from "react";
 import { useImmer } from "use-immer";
 import { useHttpClient } from "@/hooks/http-hook";
+
 import Wrap from "@/components/shared/Wrap";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
 import { ApiResultDialog } from "../shared/ApiResultDialog";
+
+const themeList = [
+  {
+    theme: "engineer",
+    bg: "/talkTrash/bg-engineer.webp",
+    bgAlt: "a background of engineer talk trash",
+    title: "輸入你聽過的工程師幹話:",
+  },
+  {
+    theme: "pua",
+    bg: "/talkTrash/bg-pua.webp",
+    bgAlt: "a background of pua talk trash",
+    title: "輸入你聽過的PUA幹話:",
+  },
+  {
+    theme: "quote",
+    bg: "/talkTrash/bg-quote.webp",
+    bgAlt: "a background of quote",
+    title: "輸入你覺得美麗的文字:",
+  },
+];
 export default function TechTalkTrash() {
   const [theme, setTheme] = useState("engineer");
-
+  const { apiMsg, clearApiMsg, sendRequest } = useHttpClient();
   const [word, setWord] = useImmer({
     left: "",
     right: "",
     bottom: "",
   });
   const [submitMsg, setSubmitMsg] = useState("");
-  const { apiMsg, clearApiMsg, sendRequest } = useHttpClient();
 
   async function handleOnClick(type) {
     if (word[type]) return;
@@ -31,14 +52,16 @@ export default function TechTalkTrash() {
     };
 
     const responseData = await sendRequest(requestData);
+
     setWord((draft) => {
       draft[type] = responseData.data.result;
     });
+
     setTimeout(() => {
       setWord((draft) => {
         draft[type] = "";
       });
-    }, 1000);
+    }, 1500);
   }
 
   function handleOnSubmit() {
@@ -61,51 +84,34 @@ export default function TechTalkTrash() {
     setTheme(theme);
   }
 
+  const title = themeList.find((item) => item.theme === theme).title;
+
   return (
     <Wrap>
       <ApiResultDialog
         title="API訊息"
         content={apiMsg}
         onOpenChange={clearApiMsg}
-      ></ApiResultDialog>
+      />
       <section className="relative min-h-page ">
-        <Image
-          src={"/talkTrash/bg-engineer.webp"}
-          fill
-          alt={"a background of engineer talk trash"}
-          priority
-          className={cn(
-            "object-cover opacity-0 transition-opacity duration-300",
-            {
-              "opacity-100": theme === "engineer",
-            },
-          )}
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-        <Image
-          src={"/talkTrash/bg-pua.webp"}
-          fill
-          alt={"a background of pua talk trash"}
-          className={cn(
-            "object-cover object-top opacity-0 transition-opacity duration-300",
-            {
-              "opacity-100": theme === "pua",
-            },
-          )}
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-        <Image
-          src={"/talkTrash/bg-quote.webp"}
-          fill
-          alt={"a background of quote"}
-          className={cn(
-            "object-cover object-top opacity-0 transition-opacity duration-300",
-            {
-              "opacity-100": theme === "quote",
-            },
-          )}
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
+        {themeList.map((item) => {
+          return (
+            <Image
+              key={item.theme}
+              src={item.bg}
+              fill
+              alt={item.bgAlt}
+              className={cn(
+                "object-cover opacity-0 transition-opacity duration-300",
+                {
+                  "opacity-100": theme === item.theme,
+                },
+              )}
+              priority
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          );
+        })}
         <div className="absolute grid h-full w-full grid-cols-1 grid-rows-1 sm:w-1/2 sm:translate-x-1/2 sm:grid-cols-2 sm:grid-rows-2">
           <div
             className="relative hidden sm:block"
@@ -114,9 +120,9 @@ export default function TechTalkTrash() {
           >
             <div
               className={cn(
-                "absolute right-2/4 top-1/2 min-h-8 w-60 rounded-md bg-primary p-2 text-white opacity-0 transition-opacity duration-300",
+                "absolute right-2/4 top-1/2 min-h-8 w-60 rounded-md bg-stone-900 p-2 text-white opacity-0 transition-opacity duration-300",
                 {
-                  "opacity-80": word.left,
+                  "opacity-100": word.left,
                 },
               )}
             >
@@ -131,9 +137,9 @@ export default function TechTalkTrash() {
           >
             <div
               className={cn(
-                "absolute left-2/4 top-1/2 w-60 rounded-md bg-primary p-2 text-white opacity-0 transition-opacity duration-300",
+                "absolute left-2/4 top-1/2 w-60 rounded-md bg-stone-900 p-2 text-white opacity-0 transition-opacity duration-300",
                 {
-                  "opacity-80": word.right,
+                  "opacity-100": word.right,
                 },
               )}
             >
@@ -148,9 +154,9 @@ export default function TechTalkTrash() {
           >
             <div
               className={cn(
-                "absolute bottom-1/4 left-1/2 w-60 -translate-x-1/2 translate-y-1/2 rounded-md bg-primary p-2 text-white opacity-0 transition-opacity duration-300",
+                "absolute bottom-1/4 left-1/2 w-60 -translate-x-1/2 translate-y-1/2 rounded-md bg-stone-900 p-2 text-white opacity-0 transition-opacity duration-300",
                 {
-                  "opacity-80": word.bottom,
+                  "opacity-100": word.bottom,
                 },
               )}
             >
@@ -159,19 +165,11 @@ export default function TechTalkTrash() {
           </div>
         </div>
         <div className="absolute left-1/2 top-1/2  min-w-60 -translate-x-1/2 -translate-y-1/2 rounded-md border-2 border-white bg-primary p-4">
-          <h4 className="block pb-4 text-center">
-            {theme === "engineer"
-              ? "輸入你聽過的工程師幹話:"
-              : theme === "pua"
-                ? "輸入你聽過的PUA幹話:"
-                : theme === "quote"
-                  ? "輸入你覺得美麗的文字:"
-                  : ""}
-          </h4>
+          <h4 className="block pb-4 text-center">{title}</h4>
           <div className="flex w-full max-w-sm items-center space-x-2">
             <Input
               type="text"
-              placeholder="耶嘿"
+              placeholder="輸入文字..."
               value={submitMsg}
               onChange={(e) => setSubmitMsg(e.target.value)}
             />
@@ -181,30 +179,18 @@ export default function TechTalkTrash() {
           </div>
         </div>
         <div className="absolute right-3 top-1/2 flex -translate-y-1/2 flex-col justify-center gap-y-2">
-          <Button
-            className={cn("h-2 w-2 hover:bg-primary", {
-              "bg-primary": theme === "engineer",
-            })}
-            onClick={() => handleOnChangeTheme("engineer")}
-          >
-            1
-          </Button>
-          <Button
-            className={cn("h-2 w-2 hover:bg-primary", {
-              "bg-primary": theme === "pua",
-            })}
-            onClick={() => handleOnChangeTheme("pua")}
-          >
-            2
-          </Button>
-          <Button
-            className={cn("h-2 w-2 hover:bg-primary", {
-              "bg-primary": theme === "quote",
-            })}
-            onClick={() => handleOnChangeTheme("quote")}
-          >
-            3
-          </Button>
+          {themeList.map((item, index) => {
+            return (
+              <Button
+                className={cn("h-2 w-2 hover:bg-primary", {
+                  "bg-primary": theme === item.theme,
+                })}
+                onClick={() => handleOnChangeTheme(item.theme)}
+              >
+                {index + 1}
+              </Button>
+            );
+          })}
         </div>
       </section>
     </Wrap>
