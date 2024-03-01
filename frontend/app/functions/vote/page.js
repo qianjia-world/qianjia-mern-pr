@@ -1,3 +1,8 @@
-export default function Vote() {
-    return <h1>投票頁</h1>;
-  }
+import Vote from "@/components/Vote";
+export default function VotePage() {
+  return (
+    <>
+      <Vote />
+    </>
+  );
+}

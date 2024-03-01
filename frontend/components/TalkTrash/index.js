@@ -9,6 +9,8 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { ApiResultDialog } from "../shared/ApiResultDialog";
 export default function TechTalkTrash() {
+  const [theme, setTheme] = useState("engineer");
+
   const [word, setWord] = useImmer({
     left: "",
     right: "",
@@ -21,7 +23,7 @@ export default function TechTalkTrash() {
     if (word[type]) return;
 
     const requestData = {
-      url: `${process.env.NEXT_PUBLIC_API}/functions/fortunes/engineer/result?not_msg=true`,
+      url: `${process.env.NEXT_PUBLIC_API}/functions/fortunes/${theme}/result?not_msg=true`,
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +44,7 @@ export default function TechTalkTrash() {
   function handleOnSubmit() {
     if (!submitMsg) return;
     const requestData = {
-      url: `${process.env.NEXT_PUBLIC_API}/functions/fortunes/engineer`,
+      url: `${process.env.NEXT_PUBLIC_API}/functions/fortunes/${theme}`,
       method: "POST",
       body: JSON.stringify({
         result: submitMsg,
@@ -52,6 +54,11 @@ export default function TechTalkTrash() {
       },
     };
     sendRequest(requestData);
+    setSubmitMsg("");
+  }
+
+  function handleOnChangeTheme(theme) {
+    setTheme(theme);
   }
 
   return (
@@ -61,13 +68,42 @@ export default function TechTalkTrash() {
         content={apiMsg}
         onOpenChange={clearApiMsg}
       ></ApiResultDialog>
-      <section className="relative h-96 ">
+      <section className="relative min-h-page ">
         <Image
-          src={"/techTalkTrash/bg.webp"}
+          src={"/talkTrash/bg-engineer.webp"}
           fill
-          alt={"a background of tech talk trash"}
+          alt={"a background of engineer talk trash"}
           priority
-          className="rounded-md object-cover "
+          className={cn(
+            "object-cover opacity-0 transition-opacity duration-300",
+            {
+              "opacity-100": theme === "engineer",
+            },
+          )}
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        <Image
+          src={"/talkTrash/bg-pua.webp"}
+          fill
+          alt={"a background of pua talk trash"}
+          className={cn(
+            "object-cover object-top opacity-0 transition-opacity duration-300",
+            {
+              "opacity-100": theme === "pua",
+            },
+          )}
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        <Image
+          src={"/talkTrash/bg-quote.webp"}
+          fill
+          alt={"a background of quote"}
+          className={cn(
+            "object-cover object-top opacity-0 transition-opacity duration-300",
+            {
+              "opacity-100": theme === "quote",
+            },
+          )}
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         <div className="absolute grid h-full w-full grid-cols-1 grid-rows-1 sm:w-1/2 sm:translate-x-1/2 sm:grid-cols-2 sm:grid-rows-2">
@@ -106,7 +142,7 @@ export default function TechTalkTrash() {
           </div>
 
           <div
-            className="relativ sm:col-span-2"
+            className="relative sm:col-span-2"
             onClick={() => handleOnClick("bottom")}
             onMouseEnter={() => handleOnClick("bottom")}
           >
@@ -123,7 +159,15 @@ export default function TechTalkTrash() {
           </div>
         </div>
         <div className="absolute left-1/2 top-1/2  min-w-60 -translate-x-1/2 -translate-y-1/2 rounded-md border-2 border-white bg-primary p-4">
-          <h4 className="block pb-4 text-center">輸入你聽過的工程師幹話:</h4>
+          <h4 className="block pb-4 text-center">
+            {theme === "engineer"
+              ? "輸入你聽過的工程師幹話:"
+              : theme === "pua"
+                ? "輸入你聽過的PUA幹話:"
+                : theme === "quote"
+                  ? "輸入你覺得美麗的文字:"
+                  : ""}
+          </h4>
           <div className="flex w-full max-w-sm items-center space-x-2">
             <Input
               type="text"
@@ -135,6 +179,32 @@ export default function TechTalkTrash() {
               送出
             </Button>
           </div>
+        </div>
+        <div className="absolute right-3 top-1/2 flex -translate-y-1/2 flex-col justify-center gap-y-2">
+          <Button
+            className={cn("h-2 w-2 hover:bg-primary", {
+              "bg-primary": theme === "engineer",
+            })}
+            onClick={() => handleOnChangeTheme("engineer")}
+          >
+            1
+          </Button>
+          <Button
+            className={cn("h-2 w-2 hover:bg-primary", {
+              "bg-primary": theme === "pua",
+            })}
+            onClick={() => handleOnChangeTheme("pua")}
+          >
+            2
+          </Button>
+          <Button
+            className={cn("h-2 w-2 hover:bg-primary", {
+              "bg-primary": theme === "quote",
+            })}
+            onClick={() => handleOnChangeTheme("quote")}
+          >
+            3
+          </Button>
         </div>
       </section>
     </Wrap>

@@ -1,3 +1,9 @@
+import TalkTrash from "@/components/TalkTrash";
+
 export default function RandomTalk() {
-  return <h1>隨機 talk</h1>;
+  return (
+    <>
+      <TalkTrash />
+    </>
+  );
 }
