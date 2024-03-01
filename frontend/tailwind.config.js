@@ -40,6 +40,9 @@ module.exports = {
       minHeight: {
         page: "calc(100vh - 408px)",
       },
+      height: {
+        page: "calc(100vh - 408px)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
