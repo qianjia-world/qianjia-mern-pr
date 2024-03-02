@@ -5,11 +5,8 @@ const { check, oneOf } = require("express-validator")
 const { nextValidatorError } = require("../middleware/next-validator-error")
 const { getAuth, checkAuthAdmin } = require("../middleware/check-auth")
 
-const functionsControllers = require("../controllers/functions-controllers")
 const votesControllers = require("../controllers/votes-controllers")
 const fortuneControllers = require("../controllers/fortune-controllers")
-
-router.get("/", functionsControllers.getFunctions)
 
 // 投票功能
 router.get("/votes", votesControllers.getVotes)
