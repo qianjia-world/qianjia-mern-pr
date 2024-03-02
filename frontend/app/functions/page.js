@@ -1,95 +1,120 @@
 "use client";
+import { useRef, useEffect } from "react";
+import { useImmer } from "use-immer";
 import Image from "next/image";
-import MenuDatas from "@/constant/menuData";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import MenuDatas from "@/constant/menuData";
+
 export default function Functions() {
-  const [target, setTarget] = useState(0);
-  const data = MenuDatas[2].children;
-  const slider = data.map((item, index) => {
-    return (
-      <li
-        className={cn(
-          "h-90 relative z-20 w-60 flex-shrink-0 rounded-xl bg-pink-800 transition-all duration-500",
-          {
-            "absolute left-1/2 top-1/2 z-0 h-full w-full -translate-x-1/2 -translate-y-1/2":
-              index === target,
-          },
-        )}
-      >
-        <Image
-          src={`${item.image}`}
-          fill
-          priority
-          className={cn("rounded-xl bg-white object-cover ", {
-            "rounded-none": index === target,
-          })}
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-        <div
-          className={cn(
-            "absolute left-1/4 top-1/2 w-1/4 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-primary p-3 text-black opacity-0",
-            {
-              "opacity-100": index === target,
-            },
-          )}
-        >
-          <h3 className="pb-4 text-center font-[500]">{item.title}</h3>
-          <p className="pb-2 leading-6">{item.description}</p>
-          <button className="mx-auto block rounded-md bg-black p-2  text-white">
-            <Link href={item.href}>瞭解更多</Link>
-          </button>
-        </div>
-      </li>
-    );
-  });
-  function handleOnClick(newTarget) {
-    if (newTarget < 0) {
-      setTarget(data.length - 1);
-    } else if (newTarget >= data.length) {
-      setTarget(0);
+  const [data, setData] = useImmer(MenuDatas[2].children);
+  let ref = useRef();
+
+  useEffect(() => {
+    function handleMouseMove(e) {
+      let x = e.clientX;
+      let y = e.clientY;
+      ref.current.style.display = "block";
+      ref.current.style.left = x + "px";
+      ref.current.style.top = y + -60 + "px";
+    }
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  function handleOnClick(e, index) {
+    e.stopPropagation();
+    if (index === 1) {
+      setData((draft) => {
+        draft.push(draft.at(0));
+        draft.shift(draft[0]);
+      });
     } else {
-      setTarget(newTarget);
+      setData((draft) => {
+        draft.unshift(draft.at(index));
+        draft.splice(index + 1, 1);
+      });
     }
   }
+
   return (
-    <div className="relative overflow-hidden bg-primary">
-      <div className="mx-auto grid  h-[600px] min-h-page max-w-screen-2xl grid-cols-2 items-center">
-        <div>文字區</div>
-        {/* 輪播 */}
-        <ul className="flex flex-nowrap gap-x-5">{slider}</ul>
+    <div
+      className="relative cursor-pointer overflow-hidden"
+      onClick={(e) => handleOnClick(e, 1)}
+    >
+      {/* 背景圖 */}
+      <Image
+        src={`${data[0].image}`}
+        fill
+        priority
+        alt="functions bg"
+        className={cn("bg-white object-cover ")}
+        sizes="(max-width: 768px) 100vw, 33vw"
+      />
+      {/* 左側說明文字 */}
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={cn(
+          "absolute left-1/4 top-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-primary p-3 text-black lg:w-1/4",
+        )}
+      >
+        <h3 className="pb-4 text-center font-[500]">{data[0].title}</h3>
+        <p className="hidden pb-2 leading-6 sm:block">{data[0].description}</p>
+        <button
+          className="mx-auto block rounded-md bg-black p-2 text-white"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Link href={data[0].href}>瞭解更多</Link>
+        </button>
       </div>
 
-      {/* {按鈕} */}
-      <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 justify-center gap-x-2">
-        <button
-          className="relative h-16 w-16"
-          onClick={() => handleOnClick(target + 1)}
-        >
-          <Image
-            src={"/loading.gif"}
-            fill
-            alt={"website info"}
-            priority
-            className="rounded-full bg-white object-cover "
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        </button>
-        <button
-          className="relative h-16 w-16"
-          onClick={() => handleOnClick(target - 1)}
-        >
-          <Image
-            src={"/loading.gif"}
-            fill
-            alt={"website info"}
-            priority
-            className="-scale-x-100 rounded-full bg-white object-cover "
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        </button>
+      {/* 右側輪播圖 */}
+      <div className="mx-auto grid  h-[600px] min-h-page max-w-screen-2xl grid-cols-2 items-center">
+        {/* 純空for排版 */}
+        <div></div>
+        {/* 輪播 */}
+        <ul className="flex flex-nowrap gap-x-5">
+          {data.map((item, index) => {
+            return (
+              <li
+                key={item.title}
+                onClick={(e) => handleOnClick(e, index)}
+                className={cn(
+                  "relative h-96 w-60 flex-shrink-0 cursor-pointer rounded-xl bg-pink-800 transition-all duration-200",
+                  {
+                    "w-0 opacity-0": index === 0,
+                  },
+                )}
+              >
+                <Image
+                  src={`${item.image}`}
+                  fill
+                  priority
+                  alt={"functions bg"}
+                  className={cn("rounded-xl bg-white object-cover ")}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </li>
+            );
+          })}
+        </ul>
       </div>
+
+      {/* {鼠標圖片} */}
+      <Image
+        ref={ref}
+        src={"/loading.gif"}
+        width={50}
+        height={50}
+        priority
+        alt="functions bg"
+        className={cn(
+          "absolute left-0 top-0 z-10 hidden -scale-x-100 object-cover",
+        )}
+        sizes="(max-width: 768px) 33vw, 10vw"
+      />
     </div>
   );
 }

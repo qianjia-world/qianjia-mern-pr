@@ -30,7 +30,7 @@ const themeList = [
     title: "輸入你覺得美麗的文字:",
   },
 ];
-export default function TechTalkTrash() {
+export default function TalkTrash() {
   const [theme, setTheme] = useState("engineer");
   const { apiMsg, clearApiMsg, sendRequest } = useHttpClient();
   const [word, setWord] = useImmer({
@@ -182,6 +182,7 @@ export default function TechTalkTrash() {
           {themeList.map((item, index) => {
             return (
               <Button
+                key={index}
                 className={cn("h-2 w-2 hover:bg-primary", {
                   "bg-primary": theme === item.theme,
                 })}
