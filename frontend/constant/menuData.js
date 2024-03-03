@@ -6,7 +6,7 @@ const MenuData = [
   },
   {
     title: "關於網站",
-    href: "/website",
+    href: "/website/info",
     children: [],
   },
   {
@@ -55,7 +55,7 @@ const MenuData = [
   },
   {
     title: "聯絡我們",
-    href: "/contact",
+    href: "/website/contact",
     children: [],
   },
   {
