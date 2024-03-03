@@ -28,6 +28,7 @@ function MenuItem({ item }) {
         <Link
           className="border-primary flex w-full justify-between border-b py-4 text-base"
           href={item.href}
+          target={item.href.startsWith("http") ? "_blank" : "_self"}
         >
           {item.title}
         </Link>
@@ -51,6 +52,7 @@ function SubMenuItem({ item }) {
         key={item.title}
         className="border-primary hover:text-primary border-b px-2 py-4 text-base"
         href={item.href}
+        target={item.href.startsWith("http") ? "_blank" : "_self"}
       >
         {item.title}
       </Link>

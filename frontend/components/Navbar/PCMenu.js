@@ -9,7 +9,11 @@ export default function PCMenu({ data = [] }) {
             key={item.title}
             className="group relative flex cursor-pointer items-stretch justify-center px-2 hover:text-primary"
           >
-            <Link className="flex items-center justify-center" href={item.href}>
+            <Link
+              className="flex items-center justify-center"
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : "_self"}
+            >
               {item.title}
             </Link>
 
@@ -21,6 +25,7 @@ export default function PCMenu({ data = [] }) {
                       key={item.title}
                       href={item.href}
                       className="py-2 hover:text-primary"
+                      target={item.href.startsWith("http") ? "_blank" : "_self"}
                     >
                       {item.title}
                     </Link>

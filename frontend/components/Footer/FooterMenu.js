@@ -14,7 +14,12 @@ export default function FooterMenu() {
                 key={item.title}
                 className="cursor-pointer hover:text-primary"
               >
-                <Link href={item.href}>{item.title}</Link>
+                <Link
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : "_self"}
+                >
+                  {item.title}
+                </Link>
               </li>
             );
           })}
