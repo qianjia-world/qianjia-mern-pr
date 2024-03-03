@@ -1,7 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { useHttpClient } from "@/hooks/http-hook";
-import { ApiResultDialog } from "../shared/ApiResultDialog";
+import { ApiResultDialog } from "@/components/shared/ApiResultDialog";
 export default function Form() {
   const { register, handleSubmit } = useForm();
 

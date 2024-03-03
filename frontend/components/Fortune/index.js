@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { useImmer } from "use-immer";
 import { useHttpClient } from "@/hooks/http-hook";
-import { ApiResultDialog } from "../shared/ApiResultDialog";
+import { ApiResultDialog } from "@/components/shared/ApiResultDialog";
 import Wrap from "@/components/shared/Wrap";
 import FortuneItem from "./FortuneItem";
 import FortuneItemBg from "./FortuneItemBg";
@@ -75,13 +75,13 @@ export default function Fortune() {
         title="結果"
         content={apiMsg}
       />
-      <section className="min-h-page text-center flex flex-col">
+      <section className="flex min-h-page flex-col text-center">
         <div className="mb-2 border border-b-2 border-primary p-2">
           <h3>占卜</h3>
           <p>找找燈在哪裡，點完燈才能進行占卜～</p>
         </div>
 
-        <div className="flex-1 grid h-96 grid-cols-1 gap-x-3 gap-y-2 sm:h-60 sm:grid-cols-3">
+        <div className="grid h-96 flex-1 grid-cols-1 gap-x-3 gap-y-2 sm:h-60 sm:grid-cols-3">
           <FortuneItem status={btnStatus.love}>
             <FortuneItemBg
               src="/fortune/bg-love.png"

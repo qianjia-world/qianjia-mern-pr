@@ -8,7 +8,7 @@ import { useHttpClient } from "@/hooks/http-hook";
 import Wrap from "@/components/shared/Wrap";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ApiResultDialog } from "../shared/ApiResultDialog";
+import { ApiResultDialog } from "@/components/shared/ApiResultDialog";
 
 const themeList = [
   {
