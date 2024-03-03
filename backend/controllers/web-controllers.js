@@ -40,7 +40,7 @@ const postContact = async (req, res, next) => {
 	}
 
 	res.json({
-		massage: "已發送訊息！"
+		message: "已發送訊息！"
 	})
 }
 
