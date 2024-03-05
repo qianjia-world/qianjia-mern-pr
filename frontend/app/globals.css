@@ -3,22 +3,27 @@
 @tailwind utilities;
 
 @layer base {
+  /* logo */
   h1 {
     @apply text-3xl lg:text-4xl;
   }
+  /* 該頁標題 */
   h2 {
     @apply text-2xl lg:text-3xl;
   }
+  /* 區標題 */
   h3 {
     @apply text-xl lg:text-2xl;
   }
+  /* 區標題的子標題 */
   h4 {
     @apply text-lg lg:text-xl;
   }
-  /* h5 {
+  h5 {
     @apply text-base lg:text-lg;
   }
+  /* 其他 */
   h6 {
     @apply text-sm lg:text-base;
-  } */
+  }
 }
