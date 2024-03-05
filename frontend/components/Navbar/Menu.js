@@ -23,10 +23,10 @@ function MenuItem({ item }) {
     <>
       <li
         key={item.title}
-        className="hover:text-primary group relative mx-1 flex cursor-pointer flex-col items-stretch px-0"
+        className="group relative mx-1 flex cursor-pointer flex-col items-stretch px-0 hover:text-primary"
       >
         <Link
-          className="border-primary flex w-full justify-between border-b py-4 text-base"
+          className="flex w-full justify-between border-b border-primary py-4 text-base"
           href={item.href}
           target={item.href.startsWith("http") ? "_blank" : "_self"}
         >
@@ -50,7 +50,7 @@ function SubMenuItem({ item }) {
     <>
       <Link
         key={item.title}
-        className="border-primary hover:text-primary border-b px-2 py-4 text-base"
+        className="border-b border-primary px-2 py-4 text-base hover:text-primary"
         href={item.href}
         target={item.href.startsWith("http") ? "_blank" : "_self"}
       >
