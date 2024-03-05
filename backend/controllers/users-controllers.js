@@ -234,6 +234,7 @@ const login = async (req, res, next) => {
 
 	res.json({
 		message: "登入成功",
+		id: user.id,
 		token
 	})
 }
