@@ -67,19 +67,24 @@ const MenuData = [
         href: "/user",
       },
       {
-        title: "註冊",
-        href: "/user/register",
-      },
-      {
-        title: "登入",
-        href: "/user/login",
-      },
-      {
         title: "登出",
         href: "/user/logout",
       },
     ],
   },
+  {
+    title: "登入＆註冊",
+    href: "/user/login",
+    children: [
+      {
+        title: "登入",
+        href: "/user/login",
+      },
+      {
+        title: "註冊",
+        href: "/user/register",
+      },
+    ],
+  },
 ];
-
 export default MenuData;
