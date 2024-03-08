@@ -7,7 +7,6 @@ export default function Form() {
 
   const { apiMsg, clearApiMsg, sendRequest } = useHttpClient();
   const onSubmit = (data) => {
-    console.log(data);
     const requestData = {
       url: `${process.env.NEXT_PUBLIC_API}/web/contact`,
       method: "POST",

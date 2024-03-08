@@ -8,7 +8,7 @@ export default function Login() {
   const { register, handleSubmit } = useForm();
   const { apiMsg, clearApiMsg, sendRequest } = useHttpClient();
 
-  async function register(data) {
+  async function submitRegister(data) {
     // const requestData = {
     //   url: `${process.env.NEXT_PUBLIC_API}/users/login`,
     //   method: "POST",
