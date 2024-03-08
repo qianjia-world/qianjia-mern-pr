@@ -52,6 +52,7 @@ export default function Form() {
                 Email<span className="text-lg text-red-600">*</span>
               </label>
               <input
+                type="email"
                 className="h-10 w-full rounded-md focus-visible:outline-primary"
                 defaultValue=""
                 {...register("email")}
