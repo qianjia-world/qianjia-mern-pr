@@ -1,9 +1,18 @@
+"use client";
 import Link from "next/link";
-
+import { useSession } from "next-auth/react";
 export default function PCMenu({ data = [] }) {
+  const session = useSession();
+  const token = session?.data?.user?.name;
+  let renderData = [...data];
+  if (token) {
+    renderData.pop();
+  } else {
+    renderData.splice(-2, 1);
+  }
   return (
     <ul className="z-10 hidden items-stretch lg:flex">
-      {data.map((item) => {
+      {renderData.map((item) => {
         return (
           <li
             key={item.title}
