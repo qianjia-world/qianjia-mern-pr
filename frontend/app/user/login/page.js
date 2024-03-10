@@ -1,9 +1,12 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useHttpClient } from "@/hooks/http-hook";
 import Wrap from "@/components/shared/Wrap";
 import { ApiResultDialog } from "@/components/shared/ApiResultDialog";
+import { signIn } from "next-auth/react";
 export default function Login() {
+  const router = useRouter();
   const { register, handleSubmit } = useForm();
   const { apiMsg, clearApiMsg, sendRequest } = useHttpClient();
 
@@ -19,7 +22,13 @@ export default function Login() {
     const responseData = await sendRequest(requestData);
 
     if (responseData?.token) {
-      localStorage.setItem("token", responseData.token);
+      signIn("credentials", {
+        name: responseData.token,
+        redirect: false,
+      });
+      setTimeout(() => {
+        router.push("/");
+      }, 1000);
     }
   }
   return (
@@ -42,6 +51,7 @@ export default function Login() {
             </label>
             <input
               type="email"
+              autoComplete="email"
               className="h-10 w-full rounded-md focus-visible:outline-primary"
               defaultValue=""
               {...register("email")}
@@ -54,6 +64,7 @@ export default function Login() {
             </label>
             <input
               type="password"
+              autoComplete="current-password"
               className="h-10 w-full rounded-md focus-visible:outline-primary"
               defaultValue=""
               {...register("password")}
