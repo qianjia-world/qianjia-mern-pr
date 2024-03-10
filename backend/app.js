@@ -49,10 +49,10 @@ mongoose
 	)
 	.then(() => {
 		console.log("Connected to database!")
-		app.listen(5001)
+		app.listen(process.env.PORT || 5001)
 	})
 	.catch((err) => {
 		console.log(err)
 		console.log("Connected to DB failed")
-		app.listen(5001)
+		app.listen(process.env.PORT || 5001)
 	})
