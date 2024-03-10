@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
 import { useEffect } from "react";
-export default function logoutPage() {
+export default function LogoutPage() {
   useEffect(() => {
     signOut({ redirect: false });
   }, []);
