@@ -55,8 +55,10 @@ const getUsers = async (req, res, next) => {
 }
 
 const getUserDetail = async (req, res, next) => {
-	const userId = req.params.id
-
+	let userId = req.params.id
+	if (userId == "myself") {
+		userId = req.authData?.id
+	}
 	// 資料本人或admin才能看詳細資料
 	// 一般使用者只能看name, badges, avatar
 	let select
@@ -240,7 +242,11 @@ const login = async (req, res, next) => {
 }
 
 const patchUserDetail = async (req, res, next) => {
-	const userId = req.params.id
+	let userId = req.params.id
+	if (userId == "myself") {
+		userId = req.authData?.id
+	}
+
 	const { name, email, avatar, password, new_password, code } = req.body
 
 	let user
