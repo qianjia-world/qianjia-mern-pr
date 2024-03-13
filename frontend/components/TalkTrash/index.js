@@ -12,6 +12,12 @@ import { ApiResultDialog } from "@/components/shared/ApiResultDialog";
 
 const themeList = [
   {
+    theme: "quote",
+    bg: "/talkTrash/bg-quote.webp",
+    bgAlt: "a background of quote",
+    title: "輸入你覺得美麗的文字:",
+  },
+  {
     theme: "engineer",
     bg: "/talkTrash/bg-engineer.webp",
     bgAlt: "a background of engineer talk trash",
@@ -23,15 +29,9 @@ const themeList = [
     bgAlt: "a background of pua talk trash",
     title: "輸入你聽過的PUA幹話:",
   },
-  {
-    theme: "quote",
-    bg: "/talkTrash/bg-quote.webp",
-    bgAlt: "a background of quote",
-    title: "輸入你覺得美麗的文字:",
-  },
 ];
 export default function TalkTrash() {
-  const [theme, setTheme] = useState("engineer");
+  const [theme, setTheme] = useState("quote");
   const { apiMsg, clearApiMsg, sendRequest } = useHttpClient();
   const [word, setWord] = useImmer({
     left: "",
@@ -93,7 +93,7 @@ export default function TalkTrash() {
         content={apiMsg}
         onOpenChange={clearApiMsg}
       />
-      <section className="relative min-h-page ">
+      <section className="min-h-large relative ">
         {themeList.map((item) => {
           return (
             <Image

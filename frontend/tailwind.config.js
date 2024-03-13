@@ -38,6 +38,7 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       minHeight: {
+        large: "calc(100vh - 200px)",
         page: "calc(100vh - 408px)",
       },
       height: {
