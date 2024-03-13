@@ -80,10 +80,10 @@ const MenuData = [
         title: "登入",
         href: "/user/login",
       },
-      {
-        title: "註冊",
-        href: "/user/register",
-      },
+      // {
+      //   title: "註冊",
+      //   href: "/user/register",
+      // },
     ],
   },
 ];

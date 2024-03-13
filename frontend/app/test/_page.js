@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function Home() {
   const [second, setSecond] = useState(3);
   const [timeId, setTimeId] = useState(null);
-  
+
   async function handleStartCalcuteSecond() {
     const id = setInterval(() => {
       setSecond((prev) => prev - 1);
