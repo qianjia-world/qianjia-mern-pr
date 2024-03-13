@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useHttpClient } from "@/hooks/http-hook";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ApiResultDialog } from "@/components/shared/ApiResultDialog";
 import UserDialog from "@/components/user/UserDialog";
 export default function User() {
@@ -11,7 +11,7 @@ export default function User() {
   const { apiMsg, clearApiMsg, sendRequest } = useHttpClient();
   const [userData, setUserData] = useState({});
 
-  async function fetchUserDetail() {
+  const fetchUserDetail = useCallback(async () => {
     const requestData = {
       url: `${process.env.NEXT_PUBLIC_API}/users/myself`,
       method: "GET",
@@ -23,8 +23,10 @@ export default function User() {
     try {
       const responseData = await sendRequest(requestData);
       setUserData(responseData.user);
-    } catch (err) {}
-  }
+    } catch (err) {
+      // Handle error if needed
+    }
+  }, [token, sendRequest]);
 
   async function patchUserDetail(data) {
     const requestData = {
@@ -51,11 +53,10 @@ export default function User() {
       },
     };
     await sendRequest(requestData);
-  
   }
   useEffect(() => {
     fetchUserDetail();
-  }, [sendRequest]);
+  }, [sendRequest, fetchUserDetail]);
 
   return (
     <>
